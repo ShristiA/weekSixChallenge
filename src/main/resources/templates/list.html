@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">Add New Message</a><br />
+<table>
+    <tr>
+    <th> Title </th>
+    <th> Posted Date </th>
+    <th> Posted By </th>
+    <th>          </th>
+    <td> Actions </td>
+</tr>
+    <tr th:each="twitter : ${twits}">
+        <td th:text="${twitter.title}"></td>
+        <td th:text="${twitter.postedDate}"></td>
+        <td th:text="${twitter.postedBy}"></td>
+
+
+        <td>
+            <a th:href="@{/update/{id}(id=${twitter.id})}">Update</a> -
+            <a th:href="@{/detail/{id}(id=${twitter.id})}">Details</a> -
+            <a th:href="@{/delete/{id}(id=${twitter.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
